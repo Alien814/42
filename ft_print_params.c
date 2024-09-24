@@ -1,32 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spernet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 17:48:15 by spernet           #+#    #+#             */
-/*   Updated: 2024/09/16 17:48:22 by spernet          ###   ########.fr       */
+/*   Created: 2024/09/17 09:58:51 by spernet           #+#    #+#             */
+/*   Updated: 2024/09/17 09:58:56 by spernet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void ft_putstr(char *str)
 {
-	write (1, &c, 1);
-}
-
-int	main(int argc, char *argv[])
-{
-	int	i;
+	int i;
 
 	i = 0;
-
-	while (i < argv[0][i] != '\0' && argc)
+	while   (str[i] != '\0')
 	{
-		ft_putchar(argv[0][i++] + 1);
+		write (1, &str[i], 1);
+		i++;
 	}
-	ft_putchar('\n');
+	write (1, "\n", 1);
+}
+/*void	ft_putchar(char c)
+{
+	write (1, &c, 1);
+}*/
+
+int	main(int argc, char **argv)
+{
+	int	i;
+	int j;
+	
+	i = 0;
+	j = 1;
+	while (j <= argc - 1)
+	{
+		if (argv[j][i] == '\0')
+		{
+			ft_putstr(argv[j]);
+			j++;
+		}
+			i++;
+		
+	}
 	return (0);
 }
